@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'war'
+//apply plugin: 'jetty'
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.springframework:spring-context:4.1.1.RELEASE'
+    compile 'org.springframework:spring-web:4.1.1.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.1.1.RELEASE'
+//    compile 'com.fasterxml.jackson.core:com.springsource.com.fasterxml.jackson.core.jackson-annotations:2.0.2'
+//    compile 'com.fasterxml.jackson.core:com.springsource.com.fasterxml.jackson.core.jackson-core:2.0.2'
+//    compile 'com.fasterxml.jackson.core:com.springsource.com.fasterxml.jackson.core.jackson-databind:2.0.2'
+}

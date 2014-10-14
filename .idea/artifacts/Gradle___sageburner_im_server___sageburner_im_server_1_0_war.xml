@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : sageburner_im_server : sageburner_im_server-1.0.war">
+    <output-path>$PROJECT_DIR$/out/artifacts/sageburner_im_server</output-path>
+    <root id="archive" name="sageburner_im_server-1.0.war">
+      <element id="javaee-facet-resources" facet="sageburner_im_server/web/Web Gradle : sageburner_im_server-1.0.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="sageburner_im_server" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: aopalliance-1.0" />
+          <element id="library" level="project" name="Gradle: commons-logging-1.1.3" />
+          <element id="library" level="project" name="Gradle: spring-context-4.1.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-aop-4.1.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-beans-4.1.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-core-4.1.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-expression-4.1.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-web-4.1.1.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-webmvc-4.1.1.RELEASE" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/sageburner_im_server/exploded/sageburner_im_server-1.0.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
