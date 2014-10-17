@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  */
 @Entity
-@Table(name="USER")
+@Table(name="user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = -7495897652017488896L;
@@ -19,14 +19,32 @@ public class User implements Serializable {
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String id;
+
+    @Column(name="username")
     private String username;
+
+    @Column(name="password")
     private String password;
+
+    @Column(name="first_name")
     private String firstName;
+
+    @Column(name="last_name")
     private String lastName;
+
+    @Column(name="phone")
     private String phone;
+
+    @Column(name="session_token")
     private String sessionToken;
+
+    @Column(name="public_key")
     private String publicKey;
+
+    @Column(name="created_at")
     private String createdAt;
+
+    @Column(name="updated_at")
     private String updatedAt;
 
     public static long getSerialVersionUID() {

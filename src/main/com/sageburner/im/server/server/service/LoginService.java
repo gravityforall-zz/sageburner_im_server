@@ -12,5 +12,6 @@ public interface LoginService {
     public void updateUser(User user);
     public List<User> listUsers();
     public User getUserByUsername(String username);
+    public User getUser(String id);
     public void removeUser(String username);
 }

@@ -54,9 +54,26 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserByUsername(String username) {
+//        Session session = this.sessionFactory.getCurrentSession();
+//        User user = (User) session.load(User.class, username);
+//        if (user != null) {
+//            logger.info("User retrieved successfully, User details = " + user);
+//        } else {
+//            logger.info("Unable to retrieve user, User details = " + user);
+//        }
+//        return user;
+        return null;
+    }
+
+    @Override
+    public User getUser(String id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.load(User.class, username);
-        logger.info("User retrieved successfully, User details = " + user);
+        User user = (User) session.get(User.class, id);
+        if(user != null){
+            logger.info("User retrieved successfully, User details = " + user);
+        } else {
+            logger.info("Unable to retrieve user, User details = " + user);
+        }
         return user;
     }
 
@@ -64,7 +81,7 @@ public class UserDaoImpl implements UserDao {
     public Void removeUser(String username) {
         Session session = this.sessionFactory.getCurrentSession();
         User user = (User) session.load(User.class, username);
-        if(user != null){
+        if(user != null) {
             session.delete(user);
             logger.info("User removed successfully, Username = " + username);
         }

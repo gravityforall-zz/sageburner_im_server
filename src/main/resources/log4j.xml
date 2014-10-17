@@ -21,11 +21,13 @@
     </appender>
 
     <root>
+        <level value="INFO" />
+
         <!--<level value="ALL" />-->
         <!--<level value="DEBUG" />-->
         <!--<level value="ERROR" />-->
         <!--<level value="FATAL" />-->
-        <level value="INFO" />
+        <!--<level value="INFO" />-->
         <!--<level value="OFF" />-->
         <!--<level value="TRACE" />-->
         <!--<level value="TRACE_INT" />-->
