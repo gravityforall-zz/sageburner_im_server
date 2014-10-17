@@ -1,6 +1,6 @@
-package com.sageburner.im.server.dao;
+package com.sageburner.im.server.server.dao;
 
-import com.sageburner.im.server.model.User;
+import com.sageburner.im.server.server.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;

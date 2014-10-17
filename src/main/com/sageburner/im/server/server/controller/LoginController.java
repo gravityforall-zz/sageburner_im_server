@@ -1,8 +1,6 @@
-package com.sageburner.im.server.controller;
+package com.sageburner.im.server.server.controller;
 
-import com.sageburner.im.server.model.User;
-import com.sageburner.im.server.service.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sageburner.im.server.server.model.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;

@@ -1,10 +1,7 @@
 package com.sageburner.im.server.test.dao;
 
-import com.sageburner.im.server.model.User;
-import org.hibernate.Session;
+import com.sageburner.im.server.server.model.User;
 import org.junit.Test;
-
-import java.util.List;
 
 /**
  * Created by Ryan on 10/17/2014.
