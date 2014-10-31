@@ -21,7 +21,8 @@ public class CryptoServiceTest {
         CryptoServiceImpl engine = new CryptoServiceImpl();
 
         // Setup
-        AsymmetricCipherKeyPair keyPair = engine.setup(new SecureRandom().nextInt(), 10);
+//        AsymmetricCipherKeyPair keyPair = engine.setup(new SecureRandom().nextInt(), 10);
+        AsymmetricCipherKeyPair keyPair = engine.setup(128, 10);
 
         // KeyGen
         Element[] ids = engine.map(keyPair.getPublic(), "angelo", "de caro", "unisa");
@@ -39,10 +40,14 @@ public class CryptoServiceTest {
         byte[][] ciphertext01 = engine.encaps(keyPair.getPublic(), ids[0], ids[1]);
         byte[][] ciphertext012 = engine.encaps(keyPair.getPublic(), ids[0], ids[1], ids[2]);
 
+        System.out.println("stop!");
+
         // Decrypt
         assertEquals(true, Arrays.equals(ciphertext0[0], engine.decaps(sk0, ciphertext0[1])));
         assertEquals(true, Arrays.equals(ciphertext01[0], engine.decaps(sk01, ciphertext01[1])));
         assertEquals(true, Arrays.equals(ciphertext012[0], engine.decaps(sk012, ciphertext012[1])));
+
+        System.out.println("drop!");
 
         assertEquals(false, Arrays.equals(ciphertext0[0], engine.decaps(sk1, ciphertext0[1])));
         assertEquals(false, Arrays.equals(ciphertext01[0], engine.decaps(sk10, ciphertext01[1])));

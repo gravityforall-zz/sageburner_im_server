@@ -1,6 +1,7 @@
 package com.sageburner.im.server.server.dao;
 
 import com.sageburner.im.server.server.model.User;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -54,15 +55,24 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserByUsername(String username) {
-//        Session session = this.sessionFactory.getCurrentSession();
-//        User user = (User) session.load(User.class, username);
-//        if (user != null) {
-//            logger.info("User retrieved successfully, User details = " + user);
-//        } else {
-//            logger.info("Unable to retrieve user, User details = " + user);
-//        }
-//        return user;
-        return null;
+        Session session = this.sessionFactory.getCurrentSession();
+
+        String sql = "SELECT * FROM user WHERE username = :username";
+        SQLQuery query = session.createSQLQuery(sql);
+        query.addEntity(User.class);
+        query.setParameter("username", username);
+
+        List results = query.list();
+
+        if (results.isEmpty()){
+            logger.info("No user found with username: " + username);
+            return null;
+        } else if (results.size() > 1) {
+            logger.info("Multiple users found with username: " + username);
+            return null;
+        } else {
+            return (User)results.get(0);
+        }
     }
 
     @Override

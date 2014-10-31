@@ -13,6 +13,8 @@ import java.io.Serializable;
 @Table(name="user")
 public class User implements Serializable {
 
+    //TODO implement toString()
+
     private static final long serialVersionUID = -7495897652017488896L;
 
     @Id

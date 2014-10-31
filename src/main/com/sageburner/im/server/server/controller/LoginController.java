@@ -13,17 +13,25 @@ import java.util.Locale;
 @RequestMapping("/service")
 public class LoginController {
 
+    //TODO implement stronger auth
+    //TODO implement password hashing
+
     @Autowired
     private LoginService loginService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public @ResponseBody
-    User getUser(@RequestParam("id")  String id, @RequestParam("password") String password){
-        User user;
+    User getUser(@RequestParam("username")  String username, @RequestParam("password") String password){
+        User user = loginService.getUserByUsername(username);
+        String userPass;
 
-        if (password.equalsIgnoreCase("password")) {
-            user = loginService.getUser(id);
-            return user;
+        if (user != null) {
+            userPass = user.getPassword();
+            if (password.equalsIgnoreCase(userPass)) {
+                return user;
+            } else {
+                return null;
+            }
         } else {
             return null;
         }
