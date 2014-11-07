@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+		
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		
+		<!-- rest.css -->
+		<link rel="stylesheet" href="css/rest.css">
+	</head>
+  
+	<body>
+		<div class="container" id="header-container" style="padding:5px">
+			<div class="col-md-12" id="banner" style="margin-top:20px;">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr height="5">
+						<td height="5"></td>
+					 </tr>
+				</table>
+			</div>
+		</div>
+		
+		<div class="container" id="body-container" style="padding:5px">
+			<div class="container" id="info-container">
+				<div class="form-group">
+					<label for="servicePathRoot">Service Base URL : </label>
+					<input class="form-control" id="servicePathRoot" readonly>
+				</div>
+				<div class="form-group">
+					<label for="serviceList">Service Name :</label>
+					<select class="form-control" id="serviceList" tabindex="1">
+						<option value="counties/{zipCode}">counties/{zipCode}</option>
+						<option value="drugsearch/{drugName}">drugsearch/{drugName}</option>
+						<option value="drugdosages/{drugId}/{year}">drugdosages/{drugId}/{year}</option>
+						<option value="drugmonogram/{ndc}">drugmonogram/{ndc}</option>
+						<option value="estimateplancost">estimateplancost</option>
+						<option value="lowcostoptions">lowcostoptions</option>
+						<option value="searchpharmacy">searchpharmacy</option>
+						<option value="searchplans">searchplans</option>
+						<option value="profiledetail/{profileId}">profiledetail/{profileId}</option>
+						<option value="saveuserdruglist">saveuserdruglist</option>
+						<option value="retrievedruglist/{persistenceId}/{siteName}">retrievedruglist/{persistenceId}/{siteName}</option>
+					</select>
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" id="helperModeCheckbox">Helper Mode
+					</label>
+				</div>
+			</div>
+			<div class="containter" id="request-response-container">
+<!-- 				<div class="form-group col-md-6"> -->
+<!-- 					<label for="requestxml">Request : </label> -->
+<!-- 					<textarea class="form-control" rows="20" id="requestxml"></textarea> -->
+<!-- 				</div> -->
+<!-- 				<div class="form-group col-md-6"> -->
+<!-- 					<label for="responsexml">Response : </label> -->
+<!-- 					<textarea class="form-control" rows="20" id="responsexml" readonly></textarea> -->
+<!-- 				</div> -->
+			</div>
+            <div class="container" id="buttons">
+				<button class="btn btn-default" type="button" id="executeButton">Execute</button>
+            </div>
+		</div>
+		
+		<div class="container" id="footer-container" style="padding:5px">
+			<div class="col-md-12" id="messages"/>
+		</div>
+		
+		<!-- Javascript processing modal-->
+		<div class="modal fade" id="processingModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h5>Processing. Please Wait...</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- JavaScript -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+		<!-- ========================================================== -->
+		
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		
+		<!-- rest.js -->
+		<script src="js/rest.js"></script>
+		
+	</body>
+</html>

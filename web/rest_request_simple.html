@@ -1,0 +1,17 @@
+				<script>
+					var templateURL = getServiceBaseUrl() + document.getElementById("serviceList").value;
+					document.getElementById("requestInput").value = templateURL;
+					
+					function simpleServiceCallGET() {
+						var serviceURL = document.getElementById("requestInput").value;
+						document.getElementById("responseIFrame").src = serviceURL;
+					}
+				</script>
+				<div class="form-group col-md-12">
+					<label for="requestInput">Request : </label>
+					<input class="form-control" id="requestInput">
+				</div>
+				<div class="form-group col-md-12">
+					<label for="responseIFrame">Response : </label>
+					<iframe class="col-md-12" id="responseIFrame" src=""></iframe>
+				</div>
