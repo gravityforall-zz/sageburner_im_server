@@ -1,4 +1,4 @@
-package com.sageburner.im.server.server.service;
+package com.sageburner.im.server.service;
 
 import it.unisa.dia.gas.jpbc.Element;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;

@@ -1,12 +1,11 @@
 package com.sageburner.im.server.test.service;
 
-import com.sageburner.im.server.server.service.CryptoServiceImpl;
+import com.sageburner.im.server.service.CryptoServiceImpl;
 import it.unisa.dia.gas.jpbc.Element;
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.CipherParameters;
 import org.junit.Test;
 
-import java.security.SecureRandom;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;

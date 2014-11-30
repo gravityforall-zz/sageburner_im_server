@@ -1,4 +1,4 @@
-package com.sageburner.im.server.server.model;
+package com.sageburner.im.server.model;
 
 import java.io.Serializable;
 

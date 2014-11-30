@@ -1,4 +1,4 @@
-package com.sageburner.im.server.server.service;
+package com.sageburner.im.server.service;
 
 import it.unisa.dia.gas.crypto.jpbc.fe.ibe.dip10.engines.AHIBEDIP10KEMEngine;
 import it.unisa.dia.gas.crypto.jpbc.fe.ibe.dip10.generators.AHIBEDIP10KeyPairGenerator;

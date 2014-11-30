@@ -1,13 +1,12 @@
-package com.sageburner.im.server.server.controller;
+package com.sageburner.im.server.controller;
 
-import com.sageburner.im.server.server.model.User;
-import com.sageburner.im.server.server.service.LoginService;
+import com.sageburner.im.server.model.User;
+import com.sageburner.im.server.service.LoginService;
+import com.sageburner.im.server.util.CryptoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import java.security.SecureRandom;
 
 @RestController
 @RequestMapping("/service")
@@ -23,11 +22,10 @@ public class LoginController {
     public @ResponseBody
     User getUser(@RequestParam("username")  String username, @RequestParam("password") String password){
         User user = loginService.getUserByUsername(username);
-        String userPass;
 
         if (user != null) {
-            userPass = user.getPassword();
-            if (password.equalsIgnoreCase(userPass)) {
+            String userPass = user.getPassword();
+            if (CryptoUtils.validatePassword(password, userPass)) {
                 return user;
             } else {
                 return null;

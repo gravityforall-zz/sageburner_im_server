@@ -1,8 +1,8 @@
 package com.sageburner.im.server.test.service;
 
-import com.sageburner.im.server.server.dao.UserDao;
-import com.sageburner.im.server.server.model.User;
-import com.sageburner.im.server.server.service.LoginServiceImpl;
+import com.sageburner.im.server.dao.UserDao;
+import com.sageburner.im.server.model.User;
+import com.sageburner.im.server.service.LoginServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

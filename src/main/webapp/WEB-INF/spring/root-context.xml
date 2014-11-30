@@ -11,15 +11,15 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="com.sageburner.im.server.server.controller" />
-    <context:component-scan base-package="com.sageburner.im.server.server.service" />
-    <context:component-scan base-package="com.sageburner.im.server.server.dao" />
+    <context:component-scan base-package="com.sageburner.im.server.controller" />
+    <context:component-scan base-package="com.sageburner.im.server.service" />
+    <context:component-scan base-package="com.sageburner.im.server.dao" />
 
     <mvc:annotation-driven />
 
     <import resource="persistence-beans.xml"/>
 
-    <beans:bean id="loginService" class="com.sageburner.im.server.server.service.LoginServiceImpl">
+    <beans:bean id="loginService" class="com.sageburner.im.server.service.LoginServiceImpl">
         <beans:property name="userDao" ref="userDAO"></beans:property>
     </beans:bean>
 </beans>

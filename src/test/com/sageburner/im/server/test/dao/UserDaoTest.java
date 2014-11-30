@@ -1,6 +1,6 @@
 package com.sageburner.im.server.test.dao;
 
-import com.sageburner.im.server.server.model.User;
+import com.sageburner.im.server.model.User;
 import org.junit.Test;
 
 /**

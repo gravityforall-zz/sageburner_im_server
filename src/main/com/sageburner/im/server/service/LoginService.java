@@ -1,6 +1,6 @@
-package com.sageburner.im.server.server.service;
+package com.sageburner.im.server.service;
 
-import com.sageburner.im.server.server.model.User;
+import com.sageburner.im.server.model.User;
 
 import java.util.List;
 
