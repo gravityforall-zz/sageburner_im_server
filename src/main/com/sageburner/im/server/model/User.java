@@ -2,6 +2,7 @@ package com.sageburner.im.server.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.lang.String;
 
 /**
  * Entity bean with JPA annotations
@@ -25,8 +26,11 @@ public class User implements Serializable {
     @Column(name="username")
     private String username;
 
-    @Column(name="password")
-    private String password;
+    @Column(name="auth_password")
+    private String authPassword;
+
+    @Column(name="xmpp_password")
+    private String xmppPassword;
 
     @Column(name="first_name")
     private String firstName;
@@ -69,12 +73,20 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAuthPassword() {
+        return authPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAuthPassword(String authPassword) {
+        this.authPassword = authPassword;
+    }
+
+    public String getXmppPassword() {
+        return xmppPassword;
+    }
+
+    public void setXmppPassword(String xmppPassword) {
+        this.xmppPassword = xmppPassword;
     }
 
     public String getFirstName() {

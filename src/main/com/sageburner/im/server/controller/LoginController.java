@@ -12,9 +12,6 @@ import java.security.SecureRandom;
 @RequestMapping("/service")
 public class LoginController {
 
-    //TODO implement stronger auth
-    //TODO implement password hashing
-
     @Autowired
     private LoginService loginService;
 
@@ -24,7 +21,7 @@ public class LoginController {
         User user = loginService.getUserByUsername(username);
 
         if (user != null) {
-            String userPass = user.getPassword();
+            String userPass = user.getAuthPassword();
             if (CryptoUtils.validatePassword(password, userPass)) {
                 return user;
             } else {
