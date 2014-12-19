@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.SecureRandom;
 
 @RestController
-@RequestMapping("/service")
+//@RequestMapping("/service")
 public class LoginController {
 
     @Autowired

@@ -1,5 +1,6 @@
 				<script>
-					var templateURL = getServiceBaseUrl() + document.getElementById("serviceList").value;
+					var idx = document.getElementById("serviceList").selectedIndex;
+					var templateURL = getServiceBaseUrl() + document.getElementById("serviceList").options[idx].text;
 					document.getElementById("requestInput").value = templateURL;
 					
 					function simpleServiceCallGET() {

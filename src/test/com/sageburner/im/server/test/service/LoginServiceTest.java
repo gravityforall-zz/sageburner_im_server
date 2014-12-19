@@ -65,7 +65,7 @@ public class LoginServiceTest {
     private User initializeUser(User user) {
         user.setId("1");
         ///user.setUsername("user1@sageburner.com");
-        user.setPassword("pass");
+        user.setAuthPassword("pass");
         user.setFirstName("Android");
         user.setLastName("Bootstrap");
         user.setPhone("555-555-5555");

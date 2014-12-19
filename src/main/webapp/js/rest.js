@@ -106,21 +106,17 @@ function getOrigin() {
 }
 
 function getServiceBaseUrl() {
-	return getOrigin() + "/DCERestWAR/dcerest/";
+	return getOrigin() + "/service/";
 }
 
 function getDataParamNameForService(serviceName) {
 	if (isDebugMode) {
     	console.log("serviceName : " + serviceName);
     }
-	if (serviceName == "estimateplancost") {
-		return "estimatePlanCost";
-	} else if (serviceName == "lowcostoptions") {
-		return "lowCostCriteria";
-	} else if (serviceName == "searchpharmacy") {
-		return "pharmacySearch";
-	} else if (serviceName == "searchplans") {
-		return "planSearchCriteria";
+	if (serviceName == "service1") {
+		return "service1Param";
+	} else if (serviceName == "service2") {
+		return "service2Param";
 	}
 }
 
@@ -146,14 +142,14 @@ $(document.body).on('change','#serviceList', function(e){
 function swapSimpleAndComplex() {
 	var serviceName = $('#serviceList').val();
 	
-	if (serviceName == "estimateplancost" || serviceName == "lowcostoptions" || serviceName == "searchpharmacy" || serviceName == "searchplans" || serviceName == "saveuserdruglist") {
+	if (serviceName == "service1" || serviceName == "service2") {
 		$("#request-response-container").load('rest_request_complex.html', function(e) {
 			if (isHelperMode) {
 				if(serviceName != '') {
 					getExampleForService(serviceName);
 				}
 			}
-			if (serviceName == "saveuserdruglist") {
+			if (serviceName == "service2") {
 				$('#executeButton').attr('onclick', 'serviceCallPOST()');
 			} else {
 				$('#executeButton').attr('onclick', 'serviceCallGET()');
@@ -191,16 +187,10 @@ function getExampleForService(serviceName) {
     	console.log("serviceName : " + serviceName);
     }
 	if (document.getElementById("requestxml") != null) {
-		if (serviceName == "estimateplancost") {
-			document.getElementById("requestxml").value = JSON.stringify(estimateplancostExample, undefined, 2);
-		} else if (serviceName == "lowcostoptions") {
-			document.getElementById("requestxml").value = JSON.stringify(lowcostoptionsExample, undefined, 2);
-		} else if (serviceName == "searchpharmacy") {
-			document.getElementById("requestxml").value = JSON.stringify(searchpharmacyExample, undefined, 2);
-		} else if (serviceName == "searchplans") {
-			document.getElementById("requestxml").value = JSON.stringify(searchplansExample, undefined, 2);
-		} else if (serviceName == "saveuserdruglist") {
-			document.getElementById("requestxml").value = JSON.stringify(saveuserdruglistExample, undefined, 2);
+		if (serviceName == "service1") {
+			document.getElementById("requestxml").value = JSON.stringify(service1Example, undefined, 2);
+		} else if (serviceName == "service2") {
+			document.getElementById("requestxml").value = JSON.stringify(service2Example, undefined, 2);
 		} else {
 			document.getElementById("requestxml").value = "";
 		}
@@ -209,176 +199,7 @@ function getExampleForService(serviceName) {
 
 // helper mode examples
 
-var estimateplancostExample = 
-{
-	"planStartMonth":"8",
-	"zipCode":"90210",
-	"county":
-	{
-		"fipsCountyCode":"037",
-		"fipsCountyName":"Los Angeles County",
-		"fipsStateCode":"06",
-		"stateCode":"CA",
-		"cmsCountyCodes":["200","210"]
-	},
-	"brandId":"AARP",
-	"accumulatedTotalDrugCost":null,
-	"accumulatedTroopBalance":null,
-	"copayCategory":"0",
-	"plans":[
-		{
-			"contractId":"S5820",
-			"pbpNumber":"031",
-			"segmentId":null,
-			"planYear":"2014"
-		},
-		{
-			"contractId":"S5921",
-			"pbpNumber":"003",
-			"segmentId":null,
-			"planYear":"2014"
-		},
-		{
-			"contractId":"S5921",
-			"pbpNumber":"376",
-			"segmentId":null,
-			"planYear":"2014"
-		}
-	],
-	"pharmacies":[
-		{
-			"pharmacyNumber":"557112",
-			"mailOrder":false,
-			"pharmacySaver":true
-		}
-	],
-	"drugs":[
-		{
-			"nationalDrugCode":"00186074368",
-			"drugQuantity":"30",
-			"drugFrequency":"30",
-			"packageQuantity":null,
-			"packageSize":null
-		},
-		{
-			"nationalDrugCode":"55513071001",
-			"drugQuantity":"1",
-			"drugFrequency":"30",
-			"packageQuantity":"1",
-			"packageSize":"1"
-		},
-		{
-			"nationalDrugCode":"00187065142",
-			"drugQuantity":"48",
-			"drugFrequency":"30",
-			"packageQuantity":null,
-			"packageSize":null
-		}
-	]
-};
-
-var lowcostoptionsExample = 
-{
-	"profileInfo" : {
-		"profileId" : "bConnected",
-		"persistenceId" : "",
-		"userId" : "",
-		"agentId" : ""
-	},
-	"basicInfo" : {
-		"planStartMonth" : "8",
-		"zipCode" : "90210",
-		"county" : {
-			"fipsCountyCode" : "037",
-			"fipsCountyName" : "Los Angeles County",
-			"fipsStateCode" : "06",
-			"stateCode" : "CA",
-			"cmsCountyCodes" : [ "200", "210" ]
-		},
-		"brandId" : "AARP",
-		"accumulatedTotalDrugCost" : null,
-		"accumulatedTroopBalance" : null,
-		"copayCategory" : "0",
-		"planCategory" : "PDP",
-		"totalAnnualDrugCost" : "400.00"
-	},
-	"selectedPlan" : {
-		"contractId" : "S5820",
-		"pbpNumber" : "031",
-		"segmentId" : null,
-		"planYear" : "2014"
-	},
-	"selectedPharmacySearchCriteria" : {
-		"pharmacyAddress" : {
-			"addressLine1" : null,
-			"addressLine2" : null,
-			"city" : null,
-			"state" : null,
-			"zipCode" : "90210",
-			"phoneNumber" : null,
-			"tty" : null
-		},
-		"yearFilter" : 2014,
-		"paginationIndex" : 1,
-		"maxRecordPerPage" : 50,
-	},
-	"selectedPharmacy" : {
-		"pharmacyNumber" : "0594855",
-		"mailOrder" : false,
-		"preferred" : false,
-		"pharmacySaver" : false
-	},
-	"selectedDrugs" : [ {
-		"nationalDrugCode" : "63304082790",
-		"drugQuantity" : "30",
-		"drugFrequency" : "30",
-		"packageQuantity" : null,
-		"packageSize" : null
-	}, {
-		"nationalDrugCode" : "00378615001",
-		"drugQuantity" : "30",
-		"drugFrequency" : "30",
-		"packageQuantity" : null,
-		"packageSize" : null
-	}]
-};
-	
-
-var searchpharmacyExample = 
-{
-	"profileInfo" : null,
-	"pharmacySearchCriteria" : {
-		"pharmacyAddress" : {
-			"addressLine1" : null,
-			"addressLine2" : null,
-			"city" : null,
-			"state" : null,
-			"zipCode" : "90210"
-		},
-		"radius" : "5",
-		"pharmacyNameFilter" : "GARFIELD",
-		"filtersInclusive" : true,
-		"pharmacySearchFilters" : {
-			"twentyFourHourTypeFilter" : null,
-			"ninetyDayTypeFilter" : null,
-			"longTermCareTypeFilter" : null,
-			"specialtyTypeFilter" : null,
-			"retailTypeFilter" : null,
-			"indianTribalUnionFilter" : null,
-			"mailOrderTypeFilter" : null,
-			"eprescriptionFilter" : null,
-			"pharmacySaverFilter" : null,
-			"preferredNetworkFilter" : null
-		},
-		"yearFilter" : "2014",
-		"paginationIndex" : "1",
-		"maxRecordPerPage" : "10",
-		"ndcFilter" : null,
-		"compositePlanId" : null
-	}
-};
-
-var searchplansExample = 
+var service1Example =
 {
 	"profileInfo" : {
 		"profileId" : "bConnected"
@@ -397,7 +218,7 @@ var searchplansExample =
 	"includeMedicalBenefit" : false
 };
 
-var saveuserdruglistExample = 
+var service2Example =
 {
   "profileInfo" : {
     "profileId" : "bConnected",
