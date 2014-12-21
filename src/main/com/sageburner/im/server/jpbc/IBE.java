@@ -1,7 +1,7 @@
 package com.sageburner.im.server.jpbc;
 
-import it.unisa.dia.gas.jpbc.CurveGenerator;
-import it.unisa.dia.gas.jpbc.CurveParameters;
+import it.unisa.dia.gas.jpbc.PairingParameters;
+import it.unisa.dia.gas.jpbc.PairingParametersGenerator;
 import it.unisa.dia.gas.jpbc.Element;
 import it.unisa.dia.gas.jpbc.Pairing;
 import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
@@ -31,10 +31,10 @@ public class IBE {
 		// Init the generator...
 		int rBits = 160;
 		int qBits = 512;
-		CurveGenerator curveGenerator = new TypeACurveGenerator(rBits, qBits);
+		PairingParametersGenerator pairingParametersGenerator = new TypeACurveGenerator(rBits, qBits);
 
 		// Generate the parameters...
-		CurveParameters params = curveGenerator.generate();
+		PairingParameters params = pairingParametersGenerator.generate();
 
 		// Saving curve parameters is not really necessary since P, s, Ppub are
 		// not determistically picked from curve params, so have to save P and s
@@ -42,7 +42,7 @@ public class IBE {
 		File f = new File("curve.properties.txt");
 		if (f.exists()) {
 			// load the parameters
-			params = PairingFactory.getInstance().loadCurveParameters(
+			params = PairingFactory.getInstance().loadParameters(
 					"curve.properties.txt");
 		} else {
 			// generate new parameters
