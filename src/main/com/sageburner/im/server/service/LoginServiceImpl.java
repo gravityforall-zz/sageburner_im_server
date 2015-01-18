@@ -56,13 +56,7 @@ public class LoginServiceImpl implements LoginService {
     @Transactional
     public User getUserByUsername(String username) {
         User user = userDao.getUserByUsername(username);
-        if (user != null) {
-            logger.info("User retrieved successfully, User details = " + user);
-            return user;
-        } else {
-            logger.info("User not found, User details = " + user);
-            return null;
-        }
+        return user;
     }
 
     @Override
