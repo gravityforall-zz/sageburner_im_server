@@ -31,6 +31,10 @@ public class IBEServiceImpl implements IBEService {
     @Override
     public IBEWrapper requestIBE(int key) {
         IBE ibe = getIBEFromMap(key);
+        if (ibe == null) {
+            return null;
+        }
+
         IBEWrapper ibeWrapper = createIBEWrapper(key, ibe);
 
         logger.info("IBEServiceImpl::requestIBE: (existing) key = " + key);

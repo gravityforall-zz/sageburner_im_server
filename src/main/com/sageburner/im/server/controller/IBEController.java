@@ -16,20 +16,14 @@ public class IBEController {
 
     @RequestMapping(value = "/getIBE", method = RequestMethod.GET)
     public @ResponseBody
-    IBEWrapper getIBEWrapper(){
-        IBEWrapper ibeWrapper = ibeService.requestIBE();
-
-        if (ibeWrapper != null) {
-            return ibeWrapper;
-        } else {
-            return null;
-        }
-    }
-
-    @RequestMapping(value = "/getIBE", method = RequestMethod.GET)
-    public @ResponseBody
     IBEWrapper getIBEWrapper(@RequestParam("key")  int key){
-        IBEWrapper ibeWrapper = ibeService.requestIBE(key);
+        IBEWrapper ibeWrapper;
+
+        if (key == 0) {
+            ibeWrapper = ibeService.requestIBE();
+        } else {
+            ibeWrapper = ibeService.requestIBE(key);
+        }
 
         if (ibeWrapper != null) {
             return ibeWrapper;
