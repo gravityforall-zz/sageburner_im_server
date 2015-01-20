@@ -1,10 +1,7 @@
 package com.sageburner.im.server.controller;
 
-import com.sageburner.im.server.model.User;
-import com.sageburner.im.server.service.IBEService;
-import com.sageburner.im.server.service.LoginService;
-import com.sageburner.im.server.util.CryptoUtils;
-import com.sageburner.im.server.util.IBEWrapper;
+import com.sageburner.im.server.service.IBEParamsService;
+import com.sageburner.im.server.util.IBEParamsWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,21 +9,21 @@ import org.springframework.web.bind.annotation.*;
 public class IBEController {
 
     @Autowired
-    private IBEService ibeService;
+    private IBEParamsService ibeParamsService;
 
-    @RequestMapping(value = "/getIBE", method = RequestMethod.GET)
+    @RequestMapping(value = "/getIBEParams", method = RequestMethod.GET)
     public @ResponseBody
-    IBEWrapper getIBEWrapper(@RequestParam("key")  int key){
-        IBEWrapper ibeWrapper;
+    IBEParamsWrapper getIBEWrapper(@RequestParam("key")  int key){
+        IBEParamsWrapper ibeParamsWrapper;
 
         if (key == 0) {
-            ibeWrapper = ibeService.requestIBE();
+            ibeParamsWrapper = ibeParamsService.requestIBEParams();
         } else {
-            ibeWrapper = ibeService.requestIBE(key);
+            ibeParamsWrapper = ibeParamsService.requestIBEParams(key);
         }
 
-        if (ibeWrapper != null) {
-            return ibeWrapper;
+        if (ibeParamsWrapper != null) {
+            return ibeParamsWrapper;
         } else {
             return null;
         }

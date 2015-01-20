@@ -18,6 +18,7 @@ public class IBE {
 	Element Ppub;
 	Element U;
 	byte[] V;
+	IBEParams ibeParams;
 
 	public IBE() {
 		setup();
@@ -31,26 +32,6 @@ public class IBE {
 
 		// Generate the parameters...
 		PairingParameters params = pairingParametersGenerator.generate();
-
-		// Saving curve parameters is not really necessary since P, s, Ppub are
-		// not determistically picked from curve params, so have to save P and s
-		// separately
-//		File f = new File("curve.properties.txt");
-//		if (f.exists()) {
-//			// load the parameters
-//			params = PairingFactory.getInstance().loadParameters(
-//					"curve.properties.txt");
-//		} else {
-//			// generate new parameters
-//			try {
-//				PrintWriter out = new PrintWriter(f);
-//				out.print(params);
-//				out.close();
-//			} catch (FileNotFoundException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
 
 		pairing = PairingFactory.getPairing(params);
 
@@ -66,54 +47,25 @@ public class IBE {
 		P = pairing.getG1().newRandomElement();
 		s = pairing.getZr().newRandomElement();
 
-		// Save IBE parameters to file
-//		File pbyte = new File("Pbyte.txt");
-//		File sbyte = new File("sbyte.txt");
-//		try {
-//			// if the parameters have already been set, read them from the file
-//			if (pbyte.exists() && sbyte.exists()) {
-//
-//				// read files
-//				Scanner in = new Scanner(pbyte);
-//				String pinstr = in.nextLine();
-//				byte[] PbyteIn = this.toByteArray(pinstr);
-//				// System.out.println(Pstr);
-//				P.setFromBytes(PbyteIn);
-//				in.close();
-//				in = new Scanner(sbyte);
-//				String sinstr = in.nextLine();
-//				byte[] SbyteIn = this.toByteArray(sinstr);
-//				s.setFromBytes(SbyteIn);
-//				in.close();
-//
-//			} else {
-//				// save them to file
-//				byte[] Pbyte = P.toBytes();
-//				byte[] Sbyte = s.toBytes();
-//				String Pstr = this.toHexString(Pbyte);
-//				String Sstr = this.toHexString(Sbyte);
-//
-//				// save to files
-//				PrintWriter out = new PrintWriter(pbyte);
-//				out.println(Pstr);
-//				out.close();
-//				out = new PrintWriter(sbyte);
-//				out.println(Sstr);
-//				out.close();
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-
 		// MUST duplicate element before multiplying it
 		// Ppub depends solely on P and s so do not need to save Ppub
 		Ppub = P.duplicate();
 		Ppub.mulZn(s);
 
-		System.out.println("P: " + P);
-		System.out.println("s: " + s);
-		System.out.println("Ppub: " + Ppub);
-		System.out.println();
+		//IBEParams
+		ibeParams = new IBEParams();
+
+		StringBuffer sb = new StringBuffer();
+		sb.append(params);
+		ibeParams.setParamsString(sb.toString());
+		ibeParams.setpByteString(this.toHexString(P.toBytes()));
+		ibeParams.setsByteString(this.toHexString(s.toBytes()));
+
+//		System.out.println("paramsString: " + ibeParams.getParamsString());
+//		System.out.println("PpByteString " + ibeParams.getpByteString());
+//		System.out.println("sByteString: " + ibeParams.getsByteString());
+//		System.out.println("Ppub: " + Ppub);
+//		System.out.println();
 	}
 
 	private Element extractPublic(String in) {
@@ -281,36 +233,6 @@ public class IBE {
 		return encMsg;
 	}
 
-	public static void main(String[] args) {
-		IBE ibe = new IBE();
-		String FacebookID = "weakcode";
-
-//		String priv = ibe.getPrivStr(FacebookID);
-//		String pub = ibe.getPubStr(FacebookID);
-
-		String encMsg = ibe.getEncFromID("you are weak", FacebookID);
-		
-		//System.out.println(encMsg);
-		 encMsg = "873DBD35C3DB370A72FFBDDED4FD30335A0F046AC05A2563AC1A0851DBF3182D4E0B06800A61EA4927824387D3519FAC752C96180E8EA0C63BBD510CE36996D70963C23B49FB27FD03726E06AED845B6D4B7D50DA718A0D13D616C6872CD2B41E0D6943410A3EBD40CCD333FC73146F94D1657EDA2E828F6EA5357407683435A-2D766CF09C1CDE043375FD04";
-		String decMsg = ibe.getDecFromID(encMsg, FacebookID);
-
-		System.out.println("Decoded msg: " + decMsg);
-
-		// set U and V (the encrypted message) to random stuff to test encoding
-		// and decoding from hex string
-		// ibe.U.setToRandom();
-		// ibe.V = null;
-
-		// System.out.println("M-in:" + byteToHex(shamessage));
-		// System.out.println("Mout: " + byteToHex(M));
-		//
-		// if (byteToHex(M).equals(byteToHex(shamessage))) {
-		// System.out.println("IT WORKED!!!!");
-		// }
-
-		System.out.println("ENDED");
-	}
-
 	// convert between byte array and hex string. Used to save public and
 	// private keys, and encrypted message
 	public String toHexString(byte[] array) {
@@ -342,5 +264,9 @@ public class IBE {
 			result += Integer.toString((b[i] & 0xff) + 0x100, 16).substring(1);
 		}
 		return result;
+	}
+
+	public IBEParams getIbeParams() {
+		return ibeParams;
 	}
 }
