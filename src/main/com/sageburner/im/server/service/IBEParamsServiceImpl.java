@@ -2,7 +2,7 @@ package com.sageburner.im.server.service;
 
 import com.sageburner.im.server.jpbc.IBE;
 import com.sageburner.im.server.jpbc.IBEParams;
-import com.sageburner.im.server.util.IBEParamsWrapper;
+import com.sageburner.im.server.jpbc.IBEParamsWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.sageburner.im.server.service;
 
-import com.sageburner.im.server.util.IBEParamsWrapper;
+import com.sageburner.im.server.jpbc.IBEParamsWrapper;
 
 /**
  * Created by Ryan on 10/16/2014.

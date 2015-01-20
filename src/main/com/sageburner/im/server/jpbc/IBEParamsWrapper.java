@@ -1,6 +1,4 @@
-package com.sageburner.im.server.util;
-
-import com.sageburner.im.server.jpbc.IBEParams;
+package com.sageburner.im.server.jpbc;
 
 /**
  * Created by Ryan on 1/17/2015.
@@ -18,7 +16,7 @@ public class IBEParamsWrapper {
         return this.key;
     }
 
-    public IBEParams getIBE() {
+    public IBEParams getIBEParams() {
         return this.ibeParams;
     }
 }

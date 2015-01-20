@@ -1,7 +1,7 @@
 package com.sageburner.im.server.controller;
 
 import com.sageburner.im.server.service.IBEParamsService;
-import com.sageburner.im.server.util.IBEParamsWrapper;
+import com.sageburner.im.server.jpbc.IBEParamsWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
