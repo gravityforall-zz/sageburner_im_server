@@ -18,11 +18,6 @@ public class LoginServiceImpl implements LoginService {
     private static final Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 
     private UserDao userDao;
-    private CryptoService cryptoService;
-
-//    public LoginServiceImpl(UserDao userDao) {
-//        this.userDao = userDao;
-//    }
 
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
